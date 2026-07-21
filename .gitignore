@@ -1,0 +1,12 @@
+# Python virtual environment
+.venv/
+__pycache__/
+
+# Output and Media files
+*.mp4
+*.png
+*.jpg
+*.safetensors
+
+# ComfyUI JSONs (Optional, but good if you have junk ones)
+# We will keep svd_workflow_api.json since it's required for the code!

@@ -1,8 +1,8 @@
 {
   "3": {
     "inputs": {
-      "seed": 237514639057514,
-      "steps": 20,
+      "seed": 1061934735013186,
+      "steps": 30,
       "cfg": 2.5,
       "sampler_name": "euler",
       "scheduler": "karras",
@@ -50,7 +50,7 @@
       "width": 1024,
       "height": 576,
       "video_frames": 25,
-      "motion_bucket_id": 127,
+      "motion_bucket_id": 50,
       "fps": 6,
       "augmentation_level": 0,
       "clip_vision": [
@@ -104,8 +104,8 @@
   },
   "17": {
     "inputs": {
-      "seed": 144698910769133,
-      "steps": 15,
+      "seed": 653615098728398,
+      "steps": 30,
       "cfg": 8,
       "sampler_name": "uni_pc_bh2",
       "scheduler": "normal",
@@ -134,7 +134,7 @@
   },
   "18": {
     "inputs": {
-      "text": "photograph beautiful scenery nature mountains alps river rapids snow sky cumulus clouds",
+      "text": "An ancient warrior walking through a ruined temple surrounded by glowing blue flames, intricate armor with gold engravings, dramatic clouds, god rays, cinematic composition, Unreal Engine 5, fantasy realism, highly detailed textures, epic atmosphere, award-winning concept art",
       "clip": [
         "16",
         1
@@ -147,7 +147,7 @@
   },
   "19": {
     "inputs": {
-      "text": "text, watermark",
+      "text": "text, watermark, distorted face, ugly, deformed, pixelated, blurry, bad anatomy, disfigured, poor details, low resolution",
       "clip": [
         "16",
         1
@@ -202,6 +202,7 @@
       "filename_prefix": "video/ComfyUI",
       "format": "auto",
       "codec": "auto",
+      "video-preview": "",
       "video": [
         "25",
         0

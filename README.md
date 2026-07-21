@@ -1,3 +1,23 @@
+HEAD
+# AI Video Generation API Engine 🚀
+
+A Python-based automation pipeline that interfaces with a local ComfyUI REST API to dynamically generate AI videos from text prompts using Stable Video Diffusion (SVD) / Unreal Engine 5 aesthetic models.
+
+## Tech Stack
+* **Language:** Python 3
+* **API Integration:** `urllib`, JSON payloads
+* **AI Architecture:** ComfyUI, Stable Video Diffusion
+
+## Features
+* Dynamically injects randomized seeds to bypass caching and enforce fresh generations.
+* Parses and structures JSON blueprints for complex Text-to-Image-to-Video workflows.
+* Handles HTTP requests and error validation directly from the ComfyUI backend.
+
+## Future Roadmap
+- [ ] Phase 2: Build a Streamlit Frontend UI
+- [ ] Phase 3: Develop a FastAPI Backend
+- [ ] Phase 4: Containerize with Docke
+
 # AI-Game-Server & The Simulation Pipeline
 
 A high-performance backend architecture designed to bridge game engines (such as Unreal Engine) with local Generative AI tools (ComfyUI) using a Python FastAPI server. This project enables real-time, dynamic asset and cutscene generation via programmatic API manipulation and asynchronous polling.
