@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 1061934735013186,
+      "seed": 231857612424232,
       "steps": 30,
       "cfg": 2.5,
       "sampler_name": "euler",
@@ -104,7 +104,7 @@
   },
   "17": {
     "inputs": {
-      "seed": 653615098728398,
+      "seed": 98637923361173,
       "steps": 30,
       "cfg": 8,
       "sampler_name": "uni_pc_bh2",
@@ -134,7 +134,7 @@
   },
   "18": {
     "inputs": {
-      "text": "An ancient warrior walking through a ruined temple surrounded by glowing blue flames, intricate armor with gold engravings, dramatic clouds, god rays, cinematic composition, Unreal Engine 5, fantasy realism, highly detailed textures, epic atmosphere, award-winning concept art",
+      "text": "photograph beautiful scenery nature mountains alps river rapids snow sky cumulus clouds",
       "clip": [
         "16",
         1
@@ -147,7 +147,7 @@
   },
   "19": {
     "inputs": {
-      "text": "text, watermark, distorted face, ugly, deformed, pixelated, blurry, bad anatomy, disfigured, poor details, low resolution",
+      "text": "text, watermark",
       "clip": [
         "16",
         1
@@ -202,7 +202,6 @@
       "filename_prefix": "video/ComfyUI",
       "format": "auto",
       "codec": "auto",
-      "video-preview": "",
       "video": [
         "25",
         0
@@ -225,41 +224,6 @@
     "class_type": "CreateVideo",
     "_meta": {
       "title": "Create Video"
-    }
-  },
-  "26": {
-    "inputs": {
-      "ckpt_name": "svd_xt.safetensors"
-    },
-    "class_type": "CheckpointLoaderSimple",
-    "_meta": {
-      "title": "Load Checkpoint"
-    }
-  },
-  "27": {
-    "inputs": {
-      "ckpt_name": "svd_xt.safetensors"
-    },
-    "class_type": "CheckpointLoaderSimple",
-    "_meta": {
-      "title": "Load Checkpoint"
-    }
-  },
-  "28": {
-    "inputs": {
-      "filename_prefix": "ComfyUI",
-      "fps": 6,
-      "lossless": true,
-      "quality": 80,
-      "method": "default",
-      "images": [
-        "21",
-        0
-      ]
-    },
-    "class_type": "SaveAnimatedWEBP",
-    "_meta": {
-      "title": "Save Animated WEBP"
     }
   }
 }

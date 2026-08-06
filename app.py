@@ -1,48 +1,48 @@
-import json
-import urllib.request
-import urllib.error
-import random
 import streamlit as st
+import requests
+import os
 
 st.set_page_config(page_title="AI Video Studio", layout="centered")
 
 st.title("🎬 AI Video Generation Studio")
-st.write("Generate high-quality AI video cutscenes using ComfyUI & Stable Video Diffusion!")
+st.write("Powered by FastAPI & ComfyUI")
 
-# Input prompt from user
+# User Inputs
 prompt_input = st.text_area(
     "Enter your video prompt:", 
     "An ancient warrior walking through a ruined temple surrounded by glowing blue flames, dramatic clouds, god rays, Unreal Engine 5"
 )
 
-if st.button("Generate Video 🚀"):
-    st.info("Sending request to ComfyUI server...")
-    
-    try:
-        # 1. Load SVD workflow
-        with open("svd_workflow_api.json", "r", encoding="utf-8") as f:
-            workflow = json.load(f)
-            
-        # 2. Randomize seed to bypass cache
-        sampler_id = "3"  # Adjust if your KSampler ID is different
-        if sampler_id in workflow:
-            workflow[sampler_id]["inputs"]["seed"] = random.randint(100000000000000, 999999999999999)
-            
-        # 3. Inject user prompt into text encode node (Node ID 6)
-        if "18" in workflow:
-            workflow["18"]["inputs"]["text"] = prompt_input
+negative_prompt_input = st.text_input(
+    "Enter your negative prompt (what to avoid):", 
+    "text, watermark, blurry, low quality, distorted"
+)
 
-        # 4. Send request to local ComfyUI API
-        payload = {"prompt": workflow}
-        data = json.dumps(payload).encode('utf-8')
-        req = urllib.request.Request(
-            "http://127.0.0.1:8188/prompt", 
-            data=data, 
-            headers={'Content-Type': 'application/json'}
-        )
-        
-        response = urllib.request.urlopen(req)
-        st.success("Generation started successfully! Check your ComfyUI window for rendering progress.")
-        
-    except Exception as e:
-        st.error(f"Error triggering video generation: {e}")
+if st.button("Generate Video 🚀"):
+    with st.spinner("FastAPI server is requesting generation from ComfyUI... Please wait."):
+        try:
+            # Call FastAPI backend endpoint with both prompts
+            api_endpoint = "http://127.0.0.1:8000/generate-video"
+            response = requests.post(
+                api_endpoint, 
+                params={
+                    "prompt_text": prompt_input,
+                    "negative_prompt": negative_prompt_input
+                }
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+                video_path = data.get("local_path")
+
+                st.success("Video generated and delivered successfully!")
+                
+                if video_path and os.path.exists(video_path):
+                    st.video(video_path)
+            else:
+                st.error(f"Backend Error [{response.status_code}]: {response.text}")
+
+        except requests.exceptions.ConnectionError:
+            st.error("Could not connect to FastAPI server. Make sure `server.py` is running on port 8000!")
+        except Exception as e:
+            st.error(f"An unexpected error occurred: {e}")
